@@ -116,8 +116,8 @@ class OldTweetsEraser:
 
                     delete_response = self.oauth.delete("https://api.twitter.com/2/tweets/{}".format(id))
                     if delete_response.status_code == 429:
-                        print('got rate limited from twitter, waiting for 15 minutes...')
-                        time.sleep(15*61)
+                        print('got rate limited from twitter, waiting for 1 minutes before trying again')
+                        time.sleep(60)
 
                     elif delete_response.status_code != 200:
                         raise Exception(
