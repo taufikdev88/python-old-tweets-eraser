@@ -102,7 +102,12 @@ class OldTweetsEraser:
                     )
 
                 tweets_json = tweets_response.json()
-                print(tweets_json)
+
+                print('Got tweets count: {}'.format(tweets_json['meta']['result_count']))
+                if tweets_json['meta']['result_count'] == 0:
+                    print('All tweets already deleted')
+                    break
+
                 for tweet in tweets_json["data"]:
                     count = count + 1
                     id = tweet["id"]
